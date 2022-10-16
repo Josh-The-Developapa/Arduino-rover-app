@@ -32,6 +32,16 @@ board.on("ready", () => {
             motors.b.reverse(speed);
         })
 
+        socket.on('left', function (speed) {
+            motors.a.reverse(speed);
+            motors.b.forward(speed);
+        })
+
+        socket.on('right', function (speed) {
+            motors.a.forward(speed);
+            motors.b.reverse(speed);
+        })
+
         socket.on('stop', function () {
             motors.a.stop()
             motors.b.stop();
@@ -40,7 +50,7 @@ board.on("ready", () => {
     });
 });
 
-const PORT = 8000
+const PORT = 8000;
 
 server.listen(PORT, () => {
     console.log(`Listening on port: ${ PORT }`);
