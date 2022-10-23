@@ -10,7 +10,7 @@ function App() {
   const [on, setOn] = useState(false);
   return (
     <div className='outerc'>
-      <h1> Arduino rover</h1>
+      <h1>JIL-R116</h1>
       <div className='card'>
         <div>
           <div className="container">
