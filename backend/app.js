@@ -9,7 +9,7 @@ const io = new Server(server, {
     }
 });
 
-//Requiring the Board and Motor classes from johnny-five library
+//Requiring the Board, Motor and Led classes from johnny-five library
 const { Board, Motor, Led } = require("johnny-five");
 
 //Create a new board instance
@@ -25,7 +25,7 @@ board.on("ready", () => {
         b: new Motor([4, 5])
     }
 
-    //Create instance for in built LED light on pin 13
+    //Create a new instance for in built Arduino-Uno LED light on pin 13
     const led = new Led(13)
 
     //Start listening for a connection event using socket.io bi-directional communication protocol.
