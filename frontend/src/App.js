@@ -6,8 +6,10 @@ import io from 'socket.io-client'
 const socket = io('http://localhost:8000');
 
 function App() {
-  const [speed, setSpeed] = useState(0);
+
+  const [speed, setSpeed] = useState(200);
   const [on, setOn] = useState(false);
+
   return (
     <div className='outerc'>
       <h1>JIL-R116</h1>
@@ -56,11 +58,11 @@ function App() {
           </div>
         </div>
       </div>
-      <label htmlFor='speed'>Speed:</label>
-      <input type='range' style={{ cursor: 'pointer' }} step='100' min='0' max='500' value={speed} onChange={(e) => {
+      {/* <label htmlFor='speed'>Speed:</label>
+      <input type='range' style={{ cursor: 'pointer' }} step='20' min='0' max='500' value={speed} onChange={(e) => {
         setSpeed(e.target.value)
         console.log(e.target.value)
-      }} />
+      }} /> */}
     </div>
   );
 }

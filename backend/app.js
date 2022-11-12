@@ -3,17 +3,20 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
+
 const io = new Server(server, {
     cors: {
         origin: 'http://localhost:3000'
     }
 });
 
-//Requiring the Board, Motor and Led classes from johnny-five library
+//Import the Board, Motor, Led and Proximity classes from johnny-five library
 const { Board, Motor, Led } = require("johnny-five");
 
 //Create a new board instance
-const board = new Board();
+const board = new Board(
+    // port: '/dev/tty.usbmodem1201'
+);
 
 //Wait for board to finish setting up
 board.on("ready", () => {
@@ -74,8 +77,8 @@ board.on("ready", () => {
         //Listen for when 'stop' event is fired
         socket.on('stop', function () {
             //Stop motion for both motors
-            motors.a.stop();
-            motors.b.stop();
+            motors.a.reverse()
+            motors.b.reverse();
         })
 
     });
