@@ -1,5 +1,0 @@
-{
-    "port": "/dev/tty.usbmodem1301",
-    "board": "arduino:avr:uno",
-    "sketch": "arduino-rover-app.ino"
-}
