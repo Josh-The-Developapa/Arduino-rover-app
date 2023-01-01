@@ -12,30 +12,35 @@ L298N motor2(motorPin3, motorPin4);
 
 void setup() {
     pinMode(ledPin, OUTPUT);  // Set pin 13 as an output
-    Serial.begin(9600);       // Start serial communication at 9600 baud
+    Serial.begin(9600);       // Start serial communication at 9600 baud rate
 }
 
 void loop() {
     if (Serial.available()) {              // Check if there is data available to read
         String str = Serial.readString();  // Read the data as a string
+
         if (str == "on") {
             digitalWrite(ledPin, HIGH);  // Turn on LED
         } else if (str == "off") {
-            digitalWrite(ledPin, LOW);
+            digitalWrite(ledPin, LOW);  // Turn off LED
         } else if (str == "forward") {
-            // move motor1 with pins 2 and 3 forward
+            // move motor1 and 2 forward
             motor1.backward();  // forward motion
             motor2.forward();   // forward motion
         } else if (str == "backward") {
-            motor1.forward();
-            motor2.backward();
+            // move motor1 and 2 backward
+            motor1.forward();   // backward motion
+            motor2.backward();  // backward motion
         } else if (str == "left") {
-            motor1.backward();
-            motor2.backward();
+            // move motor2 backward and motor2 forward. Use motor2 wheel as pivot
+            motor1.backward();  // forward motion
+            motor2.backward();  // backward motion
         } else if (str == "right") {
-            motor1.forward();
-            motor2.forward();
+            // move motor2 forward and motor2 backward. Use motor1 wheel as pivot
+            motor1.forward();  // backward motion
+            motor2.forward();  // forward motion
         } else if (str == "stop") {
+            // Stop both wheels
             motor1.stop();
             motor2.stop();
         }
