@@ -15,6 +15,8 @@ const io = new Server(server, {
 const port = new SerialPort({
     baudRate: 9600,
     path: "/dev/cu.usbmodem1101"
+    // path: "/dev/tty.HC-05"
+
 });
 
 port.on('open', function () {
